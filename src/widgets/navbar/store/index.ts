@@ -6,9 +6,10 @@ type LinkType = {
     link: RouteRecordRaw,
     childrens?: Map<string, LinkType> 
 }
-type ViewLinkType = Omit<LinkType, 'childrens'> & {
+export type ViewLinkType = Omit<LinkType, 'childrens'> & {
     name: string,
-    isActiv: boolean
+    isActiv: boolean,
+    childrens?: ViewLinkType[]
 }
 
 export const useNavigationMenuStore = defineStore('navigationMenu', {
@@ -45,12 +46,16 @@ export const useNavigationMenuStore = defineStore('navigationMenu', {
         },
         updateLinks() {
             this.viewLinks = []
-            this.__deepUpdateLinks(this.links)
+            this.__deepUpdateLinks(this.links, this.viewLinks)
         },
-        __deepUpdateLinks(linkLevel: Map<string, LinkType>) {
+        __deepUpdateLinks(linkLevel: Map<string, LinkType>, viewLinkLevel: ViewLinkType[]) {
             linkLevel.forEach((value, key) => {
-                this.viewLinks.push({name: key, link: value.link, level: value.level, isActiv: value.childrens ? false : true})
-                if(value.childrens) this.__deepUpdateLinks(value.childrens)
+                viewLinkLevel.push({name: key, link: value.link, level: value.level, isActiv: value.childrens ? false : true})
+                if(value.childrens) {
+                    const item = viewLinkLevel.at(-1)
+                    item!.childrens = []
+                    this.__deepUpdateLinks(value.childrens, item!.childrens)
+                }
             })
         }
     },

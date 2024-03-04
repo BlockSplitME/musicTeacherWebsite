@@ -1,35 +1,30 @@
 <template>
-    <v-navigation-drawer v-model="isDrawerActiv" temporary location="right">
-        <router-link v-for="item in links" :key="item.name"  class="h-100 text-decoration-none text-black aRoute" :to="item.isActiv ? item.link.path : '' " >
-            <v-btn :disabled="!item.isActiv" class="h-100 btn-reserve" >
-                {{item.link.meta?.title}} 
-            </v-btn>
-        </router-link>
+    <v-navigation-drawer v-model="drawerActiv" temporary location="right">
+        <LinksPanel :links="links"/>
     </v-navigation-drawer>
 </template>
 
 <script lang="ts" setup>
-    import { PropType, computed, ref, toRef } from 'vue';
+    import LinksPanel from './components/LinksPanel.vue';
+    
+    import { computed } from 'vue';
     import { useNavigationMenuStore } from './store';
 
     const props = defineProps({
-        isNavBarActiv: Object as PropType<boolean>
+        modelValue: {type: Boolean, required: true}
     })
-    const isDrawerActiv = toRef(props, 'isNavBarActiv')    
+    const emit = defineEmits(['update:modelValue'])
+
+    const drawerActiv = computed({
+        get: () => props.modelValue,
+        set: (value) => {
+            emit('update:modelValue', value)
+        }
+    })
+
     const navigationMenuStore = useNavigationMenuStore();
     navigationMenuStore.updateLinks();
-    
     const links = navigationMenuStore.viewLinks
-
 
 </script>
 
-<style scoped>
-    .btn-reserve:disabled .aRoute {
-        cursor: default;
-        pointer-events: none    !important;
-    }
-    .aRoute {
-        cursor: default;
-    }
-</style>

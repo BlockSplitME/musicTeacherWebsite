@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <Header @openNavbar="openNavbar()"/>
-    <NavigationMenu :drawer="isNavBarActiv"/>
+    <Header @openNavbar="openNavbar"/>
+    <NavigationMenu v-model="isNavBarActiv"/>
     <v-main>
       <router-view />
     </v-main>
@@ -12,7 +12,7 @@
   import Header from '@/widgets/header/Header.vue';
   import NavigationMenu from '@/widgets/navbar/NavigationMenu.vue';
   
-  import { ref } from 'vue';
+  import { Ref, ref, toRefs } from 'vue';
 
   const isNavBarActiv = ref<boolean>(false)
   

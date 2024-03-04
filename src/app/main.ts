@@ -3,7 +3,7 @@ import App from './App.vue';
 
 const app = createApp(App);
 
-// ** Components from UI **
+// ** Components from Shared **
 // import components from '@/shared';
 // components.forEach((component: any): void => {
 //     app.component(component.name, component);
