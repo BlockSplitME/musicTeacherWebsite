@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { LinkedList } from 'linked-list-ts';
 import { findChildPath, findParentPath } from '@/shared/utils/parseUtils'
+import postPathConfiguration from '../router'
 
 export type PostLinkType = {
     name: string,
@@ -32,14 +33,14 @@ export const usePostsRoutesStore = defineStore('postsRoutes', {
             } return this.postLinks.get(directivName)?.first?.data
         },
         checkDirectiveName(path: string) {
-            return findParentPath(path, 'post') as string
+            return findParentPath(path, postPathConfiguration.path) as string
         },
         
         getCurrentPath(fullPath: string, nameItemLocalStorage: string) {
             let parentName = this.checkDirectiveName(fullPath)
             
             let route = this.getCurrentPathLocalStorage(nameItemLocalStorage)
-            const postPath: string | null = findChildPath(fullPath, 'post')
+            const postPath: string | null = findChildPath(fullPath, postPathConfiguration.path)
             if(postPath) return this.searchNodeByPath(postPath, parentName);
             
             if(route) {

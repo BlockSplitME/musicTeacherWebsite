@@ -1,5 +1,5 @@
 export default {
-    path: 'post',
+    path: 'posts',
     component: () => import('../Post.vue')
   };
   

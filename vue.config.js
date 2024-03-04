@@ -9,6 +9,11 @@ module.exports = defineConfig({
   transpileDependencies: true,
   chainWebpack: config => {
     config.module.rule('md')
+    .test(/\.svg/)
+    .use('vue-loader')
+    .loader('vue-loader')
+
+    config.module.rule('md')
       .test(/\.md/)
       .use('vue-loader')
       .loader('vue-loader')

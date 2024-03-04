@@ -1,19 +1,22 @@
 <template>
   <v-app>
-    <Header />
+    <Header @openNavbar="openNavbar()"/>
+    <NavigationMenu :drawer="isNavBarActiv"/>
     <v-main>
       <router-view />
     </v-main>
   </v-app>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
   import Header from '@/widgets/header/Header.vue';
+  import NavigationMenu from '@/widgets/navbar/NavigationMenu.vue';
   
-  export default {
-    components: {
-      Header
-    }
-  }
+  import { ref } from 'vue';
 
+  const isNavBarActiv = ref<boolean>(false)
+  
+  const openNavbar = () => {
+    isNavBarActiv.value = !isNavBarActiv.value
+  }
 </script>

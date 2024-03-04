@@ -1,5 +1,5 @@
-<template>
-  <v-container :fluid="true" class="h-100 ">
+<template >
+  <v-container :fluid="true" class="h-100">
     <v-row class="h-100" >
       <v-col style="margin: 0 10% 0 10%;">
         <RouterView /> 

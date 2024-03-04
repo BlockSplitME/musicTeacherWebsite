@@ -4,7 +4,7 @@ import postRoute from "@/widgets/postCard/router"
 import router from "@/app/providers/router"
 import { RouteRecordName, RouteRecordRaw } from "vue-router";
 
-import { getSections, SectionHomePageType, PostType } from "@/shared/assets/sections";
+import { getSections, SectionHomePageType, PostType } from "@/content/sections";
 
 import { useNavigationMenuStore } from "@/widgets/navbar/store";
 import { usePostsRoutesStore } from "@/widgets/postCard/store";
@@ -14,8 +14,10 @@ const registrationPostSection = (name: string, title: string, homePage: SectionH
     const sectionRoute = { name: name, path: name, component: homePage.context, meta: {title: title}} as RouteRecordRaw
     router.addRoute(sectionRouteParent.name, sectionRoute)
     sectionRoute.path = sectionRouteParent.path + '/' + sectionRoute.path
+
     const postParentComponentName = sectionRoute.name as string + "Post"
-    router.addRoute(sectionRoute.name!, {...postRoute, name: postParentComponentName} as RouteRecordRaw)
+    // router.addRoute(sectionRoute.name!, {...postRoute, name: postParentComponentName} as RouteRecordRaw)
+    router.addRoute(sectionRouteParent.name, {path: name + '/' + postRoute.path, component: postRoute.component, name: postParentComponentName} as RouteRecordRaw)
     useNavigationMenuStore().addLink(sectionRoute, sectionRouteParent.name);
     
     posts?.forEach(post => {
