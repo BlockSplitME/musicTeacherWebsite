@@ -13,11 +13,11 @@
 
 <script lang="ts" setup>
     import LinkPanelItem from '@/shared/ui/appLink/LinkPanelItem.vue'
-    import { ViewLinkType } from '../store/'
-
+    import { ViewLinkType } from '../store/';
     const props = defineProps({
         links: Object 
     })
+
     const links = props.links as ViewLinkType[];
 
 </script>
