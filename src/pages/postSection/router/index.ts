@@ -1,6 +1,6 @@
 export default {
-  path: '/section',
-  name: 'section',
+  path: '/sections',
+  name: 'sections',
   meta: {
     title: 'Разделы'
   },

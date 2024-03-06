@@ -3,8 +3,8 @@
         Область секции
     </div>
     <RouterView />
-    <RouterLink to="/section/perception/"> Главная </RouterLink>
-    <RouterLink to="/section/perception/posts"> посты </RouterLink>
+    <RouterLink to="/sections/perception/"> Главная </RouterLink>
+    <RouterLink to="/sections/perception/posts"> посты </RouterLink>
 </template>
 
 <script setup lang="ts">

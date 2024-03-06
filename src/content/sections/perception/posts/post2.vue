@@ -22,8 +22,15 @@
     <p>
         <i>Ключевые слова:</i> чеканя шаг, четко и легко. 
     </p>
-    
     <audio controls>
-        <source src="https://github.com/BlockSplitME/testSite/raw/main/src/templates/perception/source/percept1.mp3" type="audio/mpeg">
+        <source :src="AUDIO_URL_FOR_POST(useRoute().fullPath)" type="audio/mpeg">
     </audio>
 </template>
+
+<script lang="ts" setup>
+    import { AUDIO_URL_FOR_POST } from '../../config'
+    import { useRoute } from 'vue-router';
+    console.log(useRoute().fullPath);
+    
+    
+</script>

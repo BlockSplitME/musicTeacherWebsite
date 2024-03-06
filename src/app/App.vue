@@ -12,7 +12,7 @@
   import Header from '@/widgets/header/Header.vue';
   import NavigationMenu from '@/widgets/navbar/NavigationMenu.vue';
   
-  import { Ref, ref, toRefs } from 'vue';
+  import { ref } from 'vue';
 
   const isNavBarActiv = ref<boolean>(false)
   
