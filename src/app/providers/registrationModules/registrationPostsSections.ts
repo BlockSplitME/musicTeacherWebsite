@@ -1,5 +1,5 @@
 import sectionRouteParent from "@/pages/postSection/router";
-import postRoute from "@/widgets/postCard/router"
+import postRoute from "@/entities/post/router"
 
 import router from "@/app/providers/router"
 import { RouteRecordName, RouteRecordRaw } from "vue-router";
@@ -7,7 +7,7 @@ import { RouteRecordName, RouteRecordRaw } from "vue-router";
 import { getSections, SectionHomePageType, PostType } from "@/content/sections";
 
 import { useNavigationMenuStore } from "@/widgets/navbar/store";
-import { usePostsRoutesStore } from "@/widgets/postCard/store";
+import { usePostsRoutesStore } from "@/entities/post/store";
 
 
 const registrationPostSection = (name: string, title: string, homePage: SectionHomePageType,  posts: PostType[]) => {

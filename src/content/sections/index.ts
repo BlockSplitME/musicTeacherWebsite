@@ -1,5 +1,6 @@
 import { findChildPath, findParentPath, findBaseName } from '@/shared/utils/parseUtils'
-import { titles } from './config'
+import { titles, POSTS_ROOT_NAME } from './config'
+
 export type SectionHomePageType = {
     name: string,
     context: NodeRequire
@@ -33,7 +34,7 @@ export function getSections(): Map<string, ContextType> {
             const linkSection = returnContexts.get(sectionName)
             if(isPost(path, name)) {
                 if(!linkSection!.posts) linkSection!.posts = []
-                linkSection!.posts.push({name: name, context: module } as PostType) 
+                linkSection!.posts.push({name: findParentPath(path, name), context: module } as PostType) 
             } else {
                 linkSection!.homePage = {name: name, context: module } as SectionHomePageType
                 titles.has(sectionName) ? linkSection!.title = titles.get(sectionName)! : console.log("Нет имени страницы");
@@ -44,5 +45,5 @@ export function getSections(): Map<string, ContextType> {
 }
 
 function isPost(path: string, name: string): boolean {
-    return findParentPath(path, name) == 'posts' ? true : false  
+    return findParentPath(path, findParentPath(path, name)!) == POSTS_ROOT_NAME ? true : false  
 }
