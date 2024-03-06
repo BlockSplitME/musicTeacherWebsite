@@ -17,7 +17,7 @@ const registrationPostSection = (name: string, title: string, homePage: SectionH
 
     const postParentComponentName = sectionRoute.name as string + "Post"
     // router.addRoute(sectionRoute.name!, {...postRoute, name: postParentComponentName} as RouteRecordRaw)
-    router.addRoute(sectionRouteParent.name, {path: name + '/' + postRoute.path, component: postRoute.component, name: postParentComponentName} as RouteRecordRaw)
+    router.addRoute(sectionRouteParent.name, {path: name + '/' + postRoute.path, component: postRoute.component, name: postParentComponentName, meta: {title: title}} as RouteRecordRaw)
     useNavigationMenuStore().addLink(sectionRoute, sectionRouteParent.name);
     
     posts?.forEach(post => {
