@@ -29,7 +29,7 @@ const registrationPostToRoute = (routeName: RouteRecordName, post: PostType, pos
     const postLinkName = routeName.toString() + "_" + post.name;
     const postLinkPath = post.name;
     router.addRoute(postParentComponentName, { name: postLinkName, path: postLinkPath, component: post.context})
-    usePostsRoutesStore().addLink(routeName.toString(), postLinkName, postLinkPath)
+    usePostsRoutesStore().addLink(routeName.toString(), postLinkName, postLinkPath, post.title, post.subtitle, post.cardImage)
 }
 export const registrationPostsSections = () => {
     getSections().forEach( (value, key) => {

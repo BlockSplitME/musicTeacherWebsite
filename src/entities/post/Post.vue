@@ -2,6 +2,7 @@
   <v-container :fluid="true" class="h-100">
     <v-row class="h-100" >
       <v-col style="margin: 0 10% 0 10%;">
+        <h2> {{ currentTitle }} </h2> 
         <RouterView /> 
       </v-col>
     </v-row>
@@ -18,7 +19,7 @@
 
 <script lang="ts" setup>
   import { usePostsRoutesStore } from './store';
-  import { computed, onUnmounted } from 'vue';
+  import { computed, onUnmounted, onUpdated, ref } from 'vue';
   import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router';
   
   const NAME_ROUTE_LOCAL_STORAGE = "route"
@@ -29,7 +30,8 @@
   
   let currentPostLink = store.getCurrentPath(route.path, NAME_ROUTE_LOCAL_STORAGE)
   router.push({name: currentPostLink?.name })
-  
+
+  let currentTitle = ref(currentPostLink?.title)
   const nextLink = computed(() => {
     return store.getNextLink(route.path, currentPostLink) 
   })
@@ -41,6 +43,10 @@
     currentPostLink = newLink
   }
   
+  onUpdated(() => {
+    currentPostLink = store.getCurrentPath(route.path, NAME_ROUTE_LOCAL_STORAGE)
+    currentTitle.value = currentPostLink?.title
+  })
   onBeforeRouteUpdate(async (to, from) => {
     store.saveCurrentPathLocalStorage(NAME_ROUTE_LOCAL_STORAGE, currentPostLink!)
   })
@@ -49,4 +55,4 @@
     store.deleteCurrentPathLocalStorage(NAME_ROUTE_LOCAL_STORAGE)
   })
 
-</script>../../entities/post/store
+</script>

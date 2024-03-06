@@ -12,5 +12,5 @@ export function findParentPath(fullPath: string, child: string) {
 }
 
 export function findBaseName(fullPath: string) {
-    return getMatch(new RegExp(/\/([^/]+)\.[^.]+$/), fullPath)
+    return getMatch(new RegExp(/\/([^/]+)(?=\.|$)/), fullPath)
 }

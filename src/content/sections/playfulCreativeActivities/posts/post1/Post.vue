@@ -1,7 +1,4 @@
 <template>
-    <h2>
-        «Музыкальные загадки»
-    </h2>
     <div class="" style="top: 150px; width: 100%; margin: 0;">
         <div id="gallery" >
             <div class="row m-0 mb-4">
