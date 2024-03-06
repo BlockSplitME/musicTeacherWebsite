@@ -30,7 +30,4 @@
 <script lang="ts" setup>
     import { AUDIO_URL_FOR_POST } from '../../config'
     import { useRoute } from 'vue-router';
-    console.log(useRoute().fullPath);
-    
-    
 </script>

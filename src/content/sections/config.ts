@@ -9,6 +9,12 @@ export const titles = new Map<string, string>([
     ["singing", "Пение"]
 ])
 
+export const audioTitle = new Map<string, string>([
+    ['П.Чайковский «Марш деревянных солдатиков»', 'post2'],
+    ['Р. Шуман - «Смелый наездник»', 'post3'],
+    ['П.И.Чайковский - «Танец Феи Драже»', 'post4']
+]) 
+
 export const AUDIO_URL = (sectionName: string, postName: string) => {
     return 'https://github.com/BlockSplitME/musicTeacherWebsite/raw/master/src/content/sections/' + sectionName + '/audio/' + postName + '.mp3'
 }
