@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest docs",
-    "deploy": "bash deploy.sh",
+    "deploy": "",
     "predeploy": "npm run build"
   },
   "dependencies": {
