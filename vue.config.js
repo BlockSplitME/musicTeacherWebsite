@@ -6,6 +6,9 @@ module.exports = defineConfig({
       entry: 'src/app/main.ts'
     }
   },
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/musicTeacherWebsite/'
+    : '/',
   transpileDependencies: true,
   chainWebpack: config => {
     config.module.rule('md')
