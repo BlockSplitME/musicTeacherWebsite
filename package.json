@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "deploy": "gh-pages --save-dev",
+    "build": "vue-cli-service build --dest docs",
+    "deploy": "bash deploy.sh",
     "predeploy": "npm run build"
   },
   "dependencies": {
