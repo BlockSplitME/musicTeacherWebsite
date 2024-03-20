@@ -5,4 +5,7 @@ const router = createRouter({
   routes: [] as unknown as RouteRecordRaw[]
 });
 
+export function getRouteByName(name: string) {
+  return router.getRoutes().find( route => route.name == name );
+}
 export default router;

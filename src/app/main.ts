@@ -1,13 +1,15 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import '@/app/styles/index.scss'
 
 const app = createApp(App);
 
-// ** Components from Shared **
-// import components from '@/shared';
-// components.forEach((component: any): void => {
-//     app.component(component.name, component);
-// });
+// ** Icons from Shared **
+import icons from '@/shared/assets/';
+const iconsObject = icons as any
+Object.keys(iconsObject).forEach( name => {
+    app.component(name, iconsObject[name]);
+});
 
 // ** Pinia **
 import store from '@/app/providers/store';
@@ -17,16 +19,30 @@ app.use(store);
 
     // ** Pages **
     import HomePage from "@/pages/home";
-    import PostSection from '@/pages/postSection';
+    import BlogPage from '@/pages/blog';
+    import SectionPage from '@/pages/section/';
+    import PostPage from '@/pages/post'
 
     import { registrationPages } from "@/app/providers/registrationModules/registrationPages";
     registrationPages({
-        home: HomePage,
-        postSection: PostSection
+        home: {
+            module: HomePage
+        },
+        blog: {
+            module: BlogPage,
+            childrens: [
+                {
+                    module: SectionPage, 
+                },
+                {
+                    module: PostPage
+                }
+            ]
+        }
     });
 
     // ** Posts Sections **
-    import { registrationPostsSections } from "@/app/providers/registrationModules/registrationPostsSections";
+    import { registrationPostsSections } from "@/app/providers/registrationModules/registrationBlogContent";
     registrationPostsSections()
 
 // **

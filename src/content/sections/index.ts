@@ -1,27 +1,11 @@
 import { findChildPath, findParentPath, findBaseName } from '@/shared/utils/parseUtils'
 import { titles, POSTS_ROOT_NAME } from './config'
-import { CardPostType } from '@/entities/post/types';
-
-export type SectionHomePageType = {
-    name: string,
-    context: NodeRequire
-}
-
-export type PostType = SectionHomePageType & {
-    data?: Date
-} & CardPostType
-
-export type ContextType  = {
-    title: string,
-    homePage: SectionHomePageType,
-    posts: PostType[]
-}
-
+import { ContextType, SectionContextType, PostContextType, CardPostType } from './types'
 // Add context
 const contexts = [] as __WebpackModuleApi.RequireContext[]
 contexts.push(require.context('./', true, /\.(vue|md)$/))
 
-export function getSections(): Map<string, ContextType> {
+export function getSectionsContext(): Map<string, ContextType> {
     const returnContexts = new Map<string, ContextType>
 
     contexts.forEach(context => {
@@ -35,9 +19,9 @@ export function getSections(): Map<string, ContextType> {
             if(isPost(path, name)) {
                 if(!linkSection!.posts) linkSection!.posts = []
                 let cardPost = require(truncateStringToWordExcluding(path ,findBaseName(path)!) + 'index.ts').default as CardPostType
-                linkSection!.posts.push({name: findParentPath(path, name), context: module, ...cardPost } as PostType)
+                linkSection!.posts.push({name: findParentPath(path, name), context: module, ...cardPost } as PostContextType)
             } else {
-                linkSection!.homePage = {name: name, context: module } as SectionHomePageType
+                linkSection!.homePage = {name: name, context: module } as SectionContextType
                 titles.has(sectionName) ? linkSection!.title = titles.get(sectionName)! : console.log("Нет имени страницы");
             }
         })

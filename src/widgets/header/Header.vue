@@ -3,17 +3,15 @@
         <v-app-bar-title> {{ title }} </v-app-bar-title>
         <v-spacer></v-spacer>
         <v-btn @click.stop="handleNavbarOpen" class="h-100 ma-0 pa-0">
-            <IconBase view-box="1 1 20 20"  height="15%" width="20">
-                <IconMenu />
-            </IconBase>
+            <iconBase view-box="1 1 20 20"  height="15%" width="20">
+                <iconMenu />
+            </iconBase>
         </v-btn>
     </v-app-bar>
 
 </template>
 
 <script lang="ts" setup>
-    import IconBase from '@/shared/assets/iconBase.vue'
-    import IconMenu from '@/shared/assets/icons/iconMenu.vue'
     import { computed } from 'vue';
     import { useRoute } from 'vue-router';
 

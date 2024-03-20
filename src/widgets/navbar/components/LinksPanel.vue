@@ -5,6 +5,7 @@
                 <router-link :class="!item.isActiv && 'a-disabled'" :to="item.isActiv ? item.link.path : ''" >
                     {{item.link.meta?.title}}
                 </router-link>
+                <v-divider></v-divider>
             </LinkPanelItem>
             <LinksPanel v-if="item.childrens" :links="item.childrens"/>
         </v-list-item>    

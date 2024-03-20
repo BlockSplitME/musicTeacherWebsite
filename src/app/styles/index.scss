@@ -1,0 +1,11 @@
+@import "./variables.scss";
+@import "./themes/post.scss";
+@import "./themes//section.scss";
+
+main {
+    font: {
+        family: $global-text-font-family;
+        size:  $global-text-font-size;
+    }
+    background-color: $app-background-color !important;
+}
