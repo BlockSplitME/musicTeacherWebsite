@@ -10,14 +10,17 @@
         </PostField>
       </v-col>
       <v-col class="align-self-end">
-        <v-row justify="space-between">
-          <v-col cols="1" >
-            <PostNavigationButton v-if="prevLink != undefined" :path="prevLink.path" @click="changeCurrentLink(prevLink)" class="sticky-md-top"/>
-          </v-col>
-          <v-col cols="1" >
-            <PostNavigationButton v-if="nextLink != undefined" :to="nextLink.path" :isForward="true" @click="changeCurrentLink(nextLink)" />
-          </v-col>
-        </v-row>
+        <v-container fluid>
+          <v-row justify="space-between">
+            <v-col >
+              <PostNavigationButton v-if="prevLink != undefined" :path="prevLink.path" @click="changeCurrentLink(prevLink)" class="sticky-md-top"/>
+            </v-col>
+            <v-spacer></v-spacer>
+            <v-col class="text-end">
+              <PostNavigationButton v-if="nextLink != undefined" :to="nextLink.path" :isForward="true" @click="changeCurrentLink(nextLink)" />
+            </v-col>
+          </v-row>
+        </v-container>
       </v-col>
     </v-row>
   </v-container>
