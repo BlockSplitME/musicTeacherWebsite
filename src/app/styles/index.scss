@@ -1,11 +1,15 @@
 @import "./variables.scss";
-@import "./themes/post.scss";
-@import "./themes//section.scss";
+@import "./media.scss";
+@import "./themes/content.scss";
+@import "./themes/image.scss";
 
 main {
     font: {
         family: $global-text-font-family;
         size:  $global-text-font-size;
+    }
+    @include media ("max", "md"){
+        font-size: calc($global-text-font-size - 3pt) !important;
     }
     background-color: $app-background-color !important;
 }

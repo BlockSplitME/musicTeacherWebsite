@@ -1,7 +1,7 @@
 <template>
-    
-    <img id="galleryPict" style="width: 50%;"class=" justify-self-center" src="./image/voice-over of fairy tales.jpg" alt="voice-over of fairy tales"> 
-           
+    <ImageBlock>
+        <img src="./image/voice-over of fairy tales.jpg" alt="voice-over of fairy tales">
+    </ImageBlock> 
 </template>
 
 <script lang="ts" setup>

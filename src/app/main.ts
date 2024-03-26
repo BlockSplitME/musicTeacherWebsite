@@ -4,6 +4,13 @@ import '@/app/styles/index.scss'
 
 const app = createApp(App);
 
+// ** UI **
+import ui from '@/shared/ui/'
+const uiObject = ui as any
+Object.keys(uiObject).forEach( name => {
+    app.component(name, uiObject[name]);
+});
+
 // ** Icons from Shared **
 import icons from '@/shared/assets/';
 const iconsObject = icons as any

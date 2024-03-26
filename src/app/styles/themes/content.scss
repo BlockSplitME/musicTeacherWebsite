@@ -1,0 +1,20 @@
+@import '../variables.scss';
+@import '../media.scss';
+
+.post-content, .section-content {
+    font-size: $all-content-font-size !important;
+    text-align: justify !important;
+    margin: 0 1em 0 1em;
+    p {
+        padding: 1em;
+    }
+    p, h2 {
+        @include media ("max", "md"){
+            font-size: calc($all-content-font-size - 3pt) !important;
+        }
+    }
+    
+}
+
+
+

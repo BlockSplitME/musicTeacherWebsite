@@ -1,18 +1,18 @@
 <template>
     <v-card variant="tonal" title="Публикации">
         <v-container fluid>
-            <v-row align="center">
-                <v-col cols="2" class="text-center">
-                    <ArrowButtonVue v-if="index - CARD_SIZE > 0" @click="prevPosts"></ArrowButtonVue>
-                </v-col>
-                <v-col>
+            <v-row align="center" no-gutters >
+                <v-col cols="12" class="v-col-sm-8">
                     <v-list>
                         <v-list-item v-for="post in posts">
                             <PostCard :title="post.title" :text="post.subtitle" @click="goRoute(post.name)"/>
                         </v-list-item>
                     </v-list>
                 </v-col>
-                <v-col cols="2" class="text-center">
+                <v-col cols="6" class="v-col-sm-2 text-center order-sm-first ">
+                    <ArrowButtonVue v-if="index - CARD_SIZE > 0" @click="prevPosts"></ArrowButtonVue>
+                </v-col>
+                <v-col cols="6" class="v-col-sm-2 text-center">
                     <ArrowButtonVue v-if="allPosts && allPosts.length >= index + CARD_SIZE" :isForward="true" @click="nextPosts"></ArrowButtonVue>
                 </v-col>
             </v-row>

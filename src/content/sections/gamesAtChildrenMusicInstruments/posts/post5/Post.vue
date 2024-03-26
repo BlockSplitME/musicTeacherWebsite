@@ -1,5 +1,7 @@
 <template>
-    <img id="galleryPict" style="width: 50%;"class=" justify-self-center" src="./image/voicing poetry.jpg" alt="voicing poetry"> 
+    <ImageBlock>
+        <img src="./image/voicing poetry.jpg" alt="voicing poetry">
+    </ImageBlock> 
 </template>
 
 <script lang="ts" setup>
