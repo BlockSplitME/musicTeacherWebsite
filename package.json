@@ -13,10 +13,12 @@
     "@types/webpack-env": "^1.18.4",
     "copy-webpack-plugin": "^12.0.2",
     "core-js": "^3.8.3",
+    "file-loader": "^6.2.0",
     "linked-list-ts": "^1.0.10",
     "pinia": "^2.1.7",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
+    "vue-load-image": "^1.1.0",
     "vue-markdown-loader": "^2.5.0",
     "vue-router": "^4.1.0",
     "vuetify": "^3.4.10"

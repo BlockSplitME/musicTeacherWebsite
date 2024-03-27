@@ -1,54 +1,35 @@
 <template>
-    <!-- <div id="gallery" >
-        <div class="row m-0 mb-4">
-            <div class="col align-self-center position-relative" style="width: 40px;"> 
-                <img style="cursor: pointer; width: 60%;" src="../../source/left-arrow.png" onclick="setPictGallery(0, 'galleryPict')" alt="arrowLeft"> 
-            </div>
-            <div class="col col-9 p-0" > 
-                <img id="galleryPict" style="width: 50%;"class=" justify-self-center" src="" alt="gallaryImage"> 
-            </div>
-            <div class="col align-self-center position-relative" style="width: 60px;"> 
-                <img style="cursor: pointer; width: 60%;" src="../../source/right-arrow.png" onclick="setPictGallery(1, 'galleryPict')" alt="arrowLeft"> 
-            </div>
-        </div>
-    </div> -->
+    <v-carousel hide-delimiter-background show-arrows height="100%">
+        <template v-slot:prev="{ props }">
+            <ArrowButton @click="props.onClick"></ArrowButton>
+        </template>
+        <template v-slot:next="{ props }">
+            <ArrowButton :isForward="true" @click="props.onClick"></ArrowButton>
+        </template>
+        <v-carousel-item cover>
+            <ImageBlock>
+                <img src="./image/image1.png" alt="2_3">
+            </ImageBlock> 
+        </v-carousel-item>
+        <v-carousel-item>
+            <ImageBlock>
+                <img src="./image/image2.png" alt="3_4">
+            </ImageBlock> 
+        </v-carousel-item>
+        <v-carousel-item>
+            <ImageBlock>
+                <img src="./image/image3.png" alt="4_5">
+            </ImageBlock> 
+        </v-carousel-item>
+        <v-carousel-item>
+            <ImageBlock>
+                <img src="./image/image4.png" alt="5_6">
+            </ImageBlock> 
+        </v-carousel-item>
+        <v-carousel-item>
+            <ImageBlock>
+                <img src="./image/image5.png" alt="6_7">
+            </ImageBlock> 
+        </v-carousel-item>
+    </v-carousel>
 </template>
-
-<script>
-    // setPictGallery(2, 'galleryPict');
-//     class Gallery {
-//     constructor() {
-//         this.picts = []
-//         this.galleryNumb = 0;
-//         this.init()
-//     }
-//     init(){
-//         for(let i = 1; i <= 5; i++) {
-//             this.picts.push("./source/musicActiv" + i + ".png")
-//         }
-//     }
-//     getPictGallery(direction) {
-//         if(direction == 1) {
-//             this.galleryNumb++;
-//             if(this.galleryNumb > this.picts.length-1) {
-//                 this.galleryNumb = 0;
-//             } 
-//         } else if(direction == 0) {
-//             this.galleryNumb--;
-//             if(this.galleryNumb < 0) {
-//                 this.galleryNumb = this.picts.length-1;
-//             } 
-//         }
-//         return this.picts[this.galleryNumb];
-//     }
-// }
-
-// const base = new Gallery();
-// function setPictGallery(flag, imgSrc) {
-//     try{
-//         document.getElementById(imgSrc).src = base.getPictGallery(flag);
-//     } catch(e) {
-//         alert(e.name + ": SetPictGallery " + ". " + e.message);
-//     }
-// }
-</script>
