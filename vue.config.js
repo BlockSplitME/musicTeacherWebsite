@@ -7,7 +7,7 @@ module.exports = defineConfig({
     }
   },
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/musicTeacherWebsite/'
+    ? '/'
     : '/',
   transpileDependencies: true,
   chainWebpack: config => {
